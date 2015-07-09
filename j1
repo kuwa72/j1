@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+temp=$(mktemp /tmp/JXXXXXX)
+class=$(basename $temp)
+outdir=$(dirname $temp)
+
+{
+  echo 'public class '$class'{'
+  echo 'public static void main(String[] args){'
+  echo $@
+  echo ';}}'
+} >> $temp.java
+
+#cat $temp.java
+
+{
+  javac $temp.java
+  java -cp $outdir $class < /dev/stdin
+}
