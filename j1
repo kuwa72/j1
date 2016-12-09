@@ -4,12 +4,22 @@ temp=$(mktemp /tmp/JXXXXXX)
 class=$(basename $temp)
 outdir=$(dirname $temp)
 
+template_name=~/.j1template
+
 {
-  echo 'public class '$class'{'
-  echo 'public static void main(String[] args){'
-  echo $@
-  echo ';}}'
-} >> $temp.java
+  if [ -f $template_name ]; then
+    cat $template_name
+  else
+    cat << DEFAULT_SOURCE_CODE
+public class __CLASSNAME__ {
+  public static void main(String[] args){
+    __CONTENTS__
+  }
+}
+DEFAULT_SOURCE_CODE
+
+  fi
+} | sed -e "s/__CLASSNAME__/$class/" -e "s/__CONTENTS__/$@/" >> $temp.java
 
 #cat $temp.java
 
