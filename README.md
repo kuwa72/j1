@@ -1,18 +1,28 @@
 # j1
 
-Java oneliner
+Java oneliner/Javaワンライナー
 
 j1 execute compiled class with arguments embeded main fucntion(ex: $ j1 foo; -> main(){ foo; })
+
+j1は引数を匿名クラスのmain関数に埋め込みコンパイルして実行するシェルスクリプトです。
 
 STDIN inherit from j1 process.
 You can write filter command like awk/sed.
 
+標準入力を受け取れるのでAwkやSedのようにフィルタも書けます（たいへんつらい）
+
 In default, temporary class is very simple. It is not import every namespace.
+
+デフォルトテンプレートはネームスペースを全くインポートしていません。
 
 If you want customize, create ~/.j1template file.
 
-You must use classname to \_\_CLASSNAME\_\_ and codes of main function to \_\_CONTENTS\_\_.
+カスタマイズしたい場合は(以下略
+
+You must use classname to \_\_CLASSNAME\_\_ and codes of main function to \_\_BODY\_\_.
 See TemplateSample.java.
+
+テンプレートのクラス名にあたる部分は \_\_CLASSNAME\_\_ 、main関数本体は \_\_BODY\_\_ と記述してください。
 
 ## Example
 
