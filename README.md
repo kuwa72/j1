@@ -17,12 +17,12 @@ In default, temporary class is very simple. It is not import every namespace.
 
 If you want customize, create ~/.j1template file.
 
-カスタマイズしたい場合は(以下略
+カスタマイズしたい場合は ~/.j1template を作成してください。
 
 You must use classname to \_\_CLASSNAME\_\_ and codes of main function to \_\_BODY\_\_.
 See TemplateSample.java.
 
-テンプレートのクラス名にあたる部分は \_\_CLASSNAME\_\_ 、main関数本体は \_\_BODY\_\_ と記述してください。
+テンプレートのクラス名にあたる部分は \_\_CLASSNAME\_\_ 、main関数本体は \_\_BODY\_\_ と記述してください。TemplateSample.javaを参考のこと。
 
 ## Example
 
@@ -35,8 +35,9 @@ Hello world.
 
 ### Convert upper case every line
 
-This sample can not run with default template. \
-Copy TemplateSample.java to ~/.j1template
+This sample can not run with default template. Copy TemplateSample.java to ~/.j1template
+
+標準テンプレートだと動かないので、TemplateSample.javaを~/.j1templateにコピーしてください。
 
 ```
 $ echo "foo\nbar\nbaz" | ./j1 'try{BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "UTF-8"));br.lines().forEach(l->{System.out.println(l.toUpperCase());});}catch(Exception e){};'
