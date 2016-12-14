@@ -13,17 +13,17 @@ template_name=~/.j1template
     cat << DEFAULT_SOURCE_CODE
 public class __CLASSNAME__ {
   public static void main(String[] args){
-    __CONTENTS__
+    __BODY__
   }
 }
 DEFAULT_SOURCE_CODE
 
   fi
-} | sed -e "s/__CLASSNAME__/$class/" -e "s/__CONTENTS__/$@/" >> $temp.java
+} | sed -e "s/__CLASSNAME__/$class/" -e "s/__BODY__/$@/" >> $temp.java
 
 #cat $temp.java
 
 {
   javac $temp.java
-  java -cp $outdir $class < /dev/stdin
+  java -cp $outdir $class
 }
